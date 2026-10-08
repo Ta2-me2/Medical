@@ -1,151 +1,182 @@
-# Medical
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/cbd5c4e6-0262-4172-a19a-bf389f1557b4" width="128" alt="Medical app icon" />
 
-A personal medical archive for macOS. Every document you own, in one folder you
-own — plain files and readable JSON, on this Mac and nowhere else.
+  # Medical
 
-It is not an electronic medical record and has no clinical authority of its own.
-It is the place to keep a lifetime of paperwork so that, twenty years later, a
-question like *"when was my last tetanus booster"* or *"what did that MRI say"*
-takes seconds rather than an afternoon with a shoebox.
+  **Your medical history. In your hands.**
 
-![Timeline](docs/timeline.png)
+  A personal medical archive for macOS — documents, vaccinations, medicines, and notes, together in one place.
 
-## Why it works this way
+  No account. No cloud. Your records stay on your Mac.
 
-**The library is a folder, not a database.** `Archive.json` is pretty-printed,
-human-readable JSON with ordinary words for keys. `Originals/` holds the files
-you imported, untouched, filed by year. A folder found in twenty years explains
-itself without this application — and that is the point.
+  [Download](https://github.com/Ta2-me2/Medical/releases/latest) · [Build from source](#building) · [Report an issue](https://github.com/Ta2-me2/Medical/issues)
+</div>
 
-**Nothing leaves the Mac.** No account, no sync, no telemetry, no AI. The app
-contains no networking code at all.
+---
 
-**Originals are never modified.** Imported files are copied in, made read-only
-and hashed. What the app adds is a layer of records *over* those files; the
-evidence underneath stays exactly as it was scanned.
+## About
 
-**Writes are atomic, with snapshots.** Every save goes through a temporary file
-and an atomic replace, and the previous version of `Archive.json` is kept in
-`Snapshots/`. A power cut leaves either the old archive or the new one, never
-half of either.
+Medical turns years of paperwork into an organized personal archive. Keep the original documents, connect them to records on a timeline, and find the details you need before your next appointment.
 
-## What is in it
+Everything lives in a folder you own: ordinary files and readable JSON. Your archive remains accessible even without the app.
 
-| | |
-|---|---|
-| **Dashboard** | What needs doing: boosters due, medicines running out, unfiled scans, pinned records |
-| **Timeline** | A life on one continuous thread, with a rail of years down the side |
-| **Inbox** | Import a hundred scans in an afternoon, file them over the following months |
-| **Documents** | The library itself: format, pages, and which records cite the document |
-| **Vaccinations** | Every dose grouped by what it was against, with batch numbers and boosters |
-| **First Aid Kit** | The cupboard at home: expiry reminders and a checklist of what a kit usually covers |
-| **Notes** | Everything no form has a field for |
-| **Export** | A doctor-ready report, or the whole library as a zip |
+> Built for macOS. A personal archive, not a clinical medical record system.
 
-<img src="docs/dashboard.png" width="49%"> <img src="docs/firstaidkit.png" width="49%">
+---
 
-### The Doctor Report
+## Features
 
-One package to hand to a doctor: a readable PDF — chronology, every dose, every
-result — plus the exact scanned pages the records cite, and nothing else. Where a
-record cites three pages of a ninety-page childhood card, three pages are what
-comes out. You choose which sections to include, and the list shows only the
-sections that actually have something in them.
+### Patient Profile
+
+Keep essential information close at hand: your name, date of birth, languages, blood type, height, and weight. Record allergies and their severity, chronic conditions, and emergency contacts, with prominent medical alerts at the top of your profile.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b7799d36-39ab-45d7-adf7-7d9eec9f01c7" width="92%" alt="Patient profile with personal information, medical alerts, vitals, allergies, and chronic conditions" />
+</p>
+
+### Dashboard
+
+See what needs attention as soon as you open the app: documents waiting in your Inbox, vaccinations due, and medicines approaching or past their expiry dates. Pin important records for quick access.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/928b2829-c5a9-4009-a50b-21e91e24ea52" width="92%" alt="Dashboard showing unprocessed documents, vaccinations due, expired medicines, and pinned records" />
+</p>
+
+### Timeline
+
+Browse your medical history on one continuous timeline, with a year rail for quick navigation. Keep consultations, tests, procedures, prescriptions, and vaccinations together with their dates, providers, findings, documents, and notes.
+
+Filter the history, mark significant events or follow-ups, and preserve partial dates when an old record gives only a month or year.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b7852113-6efd-44f0-a8bd-ce5cb46bb661" width="92%" alt="Medical timeline with year navigation, dated records, providers, findings, and attachments" />
+</p>
+
+### Inbox
+
+Import your documents now and organize them at your own pace. Separate **Not Processed**, **Used**, and **Archived** files, see which documents already support a medical record, and open the linked record directly.
+
+Original files are copied into the library, so filing a document never changes the source you imported.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/eed609de-8474-4b30-bd88-826de1efd123" width="92%" alt="Inbox with document status filters, file details, and links to medical records" />
+</p>
+
+### Documents
+
+Browse the complete document library as a list or thumbnail grid. Search, sort, and filter files; check their format, page count, and the records that cite them. Archive-wide search is also available from the toolbar.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/21a49763-1da9-4a2e-9459-ae5e6c01fa19" width="92%" alt="Documents in a thumbnail grid with processing status, dates, and view controls" />
+</p>
 
 ### Vaccinations
 
-Doses are grouped by what the record is *for*, not by the product name, so a
-course given as BCG and later as BCG-M reads as one history with one booster
-clock — which is also how the reminders count it.
+View your vaccination history **by vaccine or by date**, with dose details, manufacturers, batch numbers, and injection sites. Track the next dose using the booster intervals recorded in your archive.
 
-![Vaccinations](docs/vaccinations.png)
+Doses are grouped by what they protect against, so different product names can belong to one course with one booster schedule.
 
-## The library on disk
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f1725fbc-12aa-4349-af57-8f9ecc2bfc8c" width="92%" alt="Vaccination history with upcoming doses, vaccine groups, batch numbers, and booster intervals" />
+</p>
 
-```
+### First Aid Kit
+
+Keep an inventory of the medicines at home, organized by category, with expiry dates and attached documents. See what needs replacing and use a general checklist to spot categories missing from your kit.
+
+The checklist suggests categories, not products or doses; a pharmacist can help you choose what fits your needs.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ff030476-578a-4bd9-8304-9c88887a1b7a" width="92%" alt="First Aid Kit with missing categories, expiry alerts, and medicine cards" />
+</p>
+
+### Notes
+
+Keep the details that do not fit a form: questions, observations, follow-up plans, or context about a document. Browse and filter notes in one place, with each note linked to its medical record and date.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/5438e70c-d173-441a-bfb1-f119a8ec9574" width="92%" alt="Notes linked to medical records, with dates and filtering" />
+</p>
+
+### Export
+
+Prepare a **Doctor Report** or save the complete library as a ZIP archive for backup or transfer to another Mac.
+
+- Choose the records and sections to include: chronology, vaccinations, findings and results, diagnoses, medications, full records, and source documents.
+- Create a readable PDF report with the result tables you have entered in English.
+- Include only the scanned pages your records cite — three relevant pages from a ninety-page document stay three pages in the export.
+- Manage and switch between separate libraries through **Export → Libraries…**.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/56f7e046-eeb0-477f-ac1b-94a604e8aa43" width="92%" alt="Export options for a Doctor Report with selectable records, sections, and source documents" />
+</p>
+
+---
+
+## Your Data
+
+The library is a folder of readable JSON and original files:
+
+```text
 ~/Library/Application Support/Medical/
 └── Medical Library/
-    ├── Archive.json      every record, in readable JSON
-    ├── Library.json      format version, archive id, a note explaining the folder
-    ├── Originals/
-    │   └── 2016/         imported files, read-only, filed by year
-    ├── Snapshots/        previous versions of Archive.json
-    └── Removed/          originals taken out of the archive but not destroyed
+    ├── Archive.json    Medical records in readable JSON
+    ├── Library.json    Library identity and format information
+    ├── Originals/     Imported files, read-only and organized by year
+    ├── Snapshots/     Previous versions of Archive.json
+    └── Removed/       Originals removed from the archive, kept on disk
 ```
 
-Nothing in the app ever writes into `Originals/` after an import. Taking a
-document out of the archive moves the file to `Removed/`, so the bytes are still
-there if the decision turns out to have been wrong.
+- **Preserved originals.** Imported files are copied, hashed, and made read-only. The app adds records without modifying those files.
+- **Atomic saves.** Each save replaces the archive atomically and keeps the previous version in `Snapshots/`.
+- **Recoverable removals.** Removing a document moves its original to `Removed/` rather than destroying it.
+- **Portable libraries.** Move, rename, copy, or back up the folder with Time Machine. Keep several libraries side by side.
 
-The folder can be moved, renamed, copied to another Mac or backed up with Time
-Machine. Several libraries can live side by side — **Export → Libraries…**
-switches between them. It sits in Application Support rather than Documents
-partly so that it is not swept into iCloud Drive along with everything else.
+## Privacy
 
-## Installing
+Medical has no networking code: no accounts, cloud sync, analytics, crash reporting, or AI. Your records stay on disk unless you choose to export or copy them.
 
-Download the `.dmg` from [Releases](../../releases) and drag **Medical** to
-Applications. One universal build, Apple Silicon and Intel. **Requires macOS 26.**
+The optional **John Appleseed** sample archive contains fictional data and is only added to an empty library.
 
-The app is signed ad-hoc rather than with a paid Apple Developer certificate, so
-the first launch is refused: *"Apple could not verify Medical is free of
-malware."* To open it anyway, go to **System Settings → Privacy & Security**,
-scroll to the bottom, and press **Open Anyway** next to the message about
-Medical. macOS asks once; after that it launches normally.
-
-If you would rather not take that on faith — a reasonable position for an
-application that will hold your medical records — build it yourself instead. The
-source here is all of it.
+---
 
 ## Building
 
-Requires macOS 26 and Xcode 26 (Swift 6).
+Requires **macOS 26** and **Xcode 26 with Swift 6**. The current distribution is built from source.
 
 ```bash
 git clone https://github.com/Ta2-me2/Medical.git
 cd Medical
-open Medical.xcodeproj     # then ⌘R
+open Medical.xcodeproj
 ```
 
-or from the command line:
+Press **⌘R** in Xcode to build and run.
+
+<details>
+<summary><strong>Command-line build and tests</strong></summary>
+
+Build a release version:
 
 ```bash
 xcodebuild -project Medical.xcodeproj -scheme Medical -configuration Release build
 ```
 
-## Tests
+Run the model checks:
 
 ```bash
 ./Tests/run.sh
 ```
 
-264 checks over the model layer — document usage, date precision, booster
-schedules, library moves, backup round trips, what the Doctor Report decides to
-print. They compile the model on its own with `swiftc`, so they need no Xcode
-project and no simulator, and they run in a few seconds.
+The checks cover document usage, date precision, booster schedules, library moves, backup round trips, and report contents. They compile with `swiftc` and need no simulator.
 
-## Privacy
+</details>
 
-No network requests, no analytics, no crash reporting, no accounts. Your records
-never leave the folder on your disk unless you export them yourself.
+For the storage format and design decisions, see [ARCHITECTURE.md](ARCHITECTURE.md), written in Russian.
 
-The sample archive the app offers on first launch is fiction — a patient named
-John Appleseed — and is only written into an empty library.
+---
 
-## Not medical advice
+<div align="center">
+  Made with care by <a href="https://github.com/Ta2-me2">Ta2</a>
 
-The first aid kit's recommendations are a general checklist of the directions a
-home kit usually covers. They name no products and no doses. What belongs in each
-is a question for a pharmacist and for your own history.
-
-## Architecture
-
-[`ARCHITECTURE.md`](ARCHITECTURE.md) explains the decisions behind the format and
-the screens — why JSON instead of a database, how dates with unknown precision are
-stored, why the inbox exists. It is written in Russian.
-
-## Licence
-
-MIT — see [`LICENSE`](LICENSE).
-
-Built by [Ta2](https://github.com/Ta2-me2).
+  MIT License — see <a href="LICENSE">LICENSE</a>.
+</div>
