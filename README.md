@@ -140,9 +140,28 @@ The optional **John Appleseed** sample archive contains fictional data and is on
 
 ---
 
+## Installing
+
+Requires **macOS 26** or later. One universal build, Apple Silicon and Intel.
+
+1. Download the `.dmg` from [Releases](https://github.com/Ta2-me2/Medical/releases/latest) and drag **Medical** to **Applications**.
+2. Open **Terminal** and run this once:
+
+   ```bash
+   xattr -dr com.apple.quarantine /Applications/Medical.app
+   ```
+
+3. Open **Medical** from Applications.
+
+Medical is signed ad-hoc rather than with a paid Apple Developer certificate, so macOS refuses a copy downloaded from the internet and reports that the app *"is damaged and should be moved to the Trash."* The command above removes the quarantine flag from your installed copy. Only run it on a copy downloaded from this project's releases.
+
+If you would rather not take that on faith — a reasonable position for an application that will hold your medical records — build it from source instead. The source here is all of it.
+
+---
+
 ## Building
 
-Requires **macOS 26** and **Xcode 26 with Swift 6**. The current distribution is built from source.
+Requires **macOS 26** and **Xcode 26 with Swift 6**.
 
 ```bash
 git clone https://github.com/Ta2-me2/Medical.git
